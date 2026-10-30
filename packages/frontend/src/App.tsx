@@ -6,11 +6,12 @@
 //-----------------------------------------------------------------------
 
 import { Gamepad2, Moon, Sun, Users, User, Volume2, VolumeX } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { GameArt } from './arcade/GameArt';
 import { GamePage } from './arcade/GamePage';
 import { GAMES } from './games/registry';
+import { playMusic } from './games/engine/music';
 import { isMuted, setMuted } from './games/engine/sfx';
 import { useTheme } from './hooks/theme.context';
 
@@ -129,6 +130,12 @@ function Lobby({ onPlay }: { onPlay: (id: string) => void }) {
 function App() {
   const [activeId, setActiveId] = useState<string | null>(null);
   const active = GAMES.find((game) => game.id === activeId);
+
+  useEffect(() => {
+    playMusic(active ? 'game' : 'lobby');
+  }, [active]);
+
+  useEffect(() => () => playMusic(null), []);
 
   return (
     <div className="flex min-h-full flex-col bg-background">

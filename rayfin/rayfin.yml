@@ -11,6 +11,8 @@ services:
       enabled: false
     allowedRedirectUris:
       - http://localhost:5173
+      - http://127.0.0.1:5173
+      - https://quiet-holly-75826a6b94-northeurope.webapp.fabricapps.net
   data:
     enabled: true
     path: packages/data
@@ -25,3 +27,7 @@ services:
     assetAccess: protected
     embedded:
       only: false
+  storage:
+    enabled: false
+  functions:
+    enabled: false

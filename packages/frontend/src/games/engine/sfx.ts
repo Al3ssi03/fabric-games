@@ -6,6 +6,13 @@
 let context: AudioContext | null = null;
 let muted = false;
 
+export function getAudioContext(): AudioContext | null {
+  if (typeof AudioContext === 'undefined') return null;
+  context ??= new AudioContext();
+  if (context.state === 'suspended') void context.resume();
+  return context;
+}
+
 export function setMuted(value: boolean): void {
   muted = value;
 }
