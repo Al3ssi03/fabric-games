@@ -7,7 +7,7 @@
  */
 
 /** Games that post to the leaderboard. Two-player games keep no scores. */
-export const SCORED_GAMES = ['snake', 'bolt-rush'] as const;
+export const SCORED_GAMES = ['snake', 'bolt-rush', 'steel-raid', 'bug-invasion'] as const;
 export type ScoredGameId = (typeof SCORED_GAMES)[number];
 
 export interface ScoreRecord {

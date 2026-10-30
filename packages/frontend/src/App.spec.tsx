@@ -43,7 +43,7 @@ describe('App', () => {
   it('lists every cabinet in the lobby', () => {
     renderApp();
     expect(screen.getByRole('heading', { name: 'Pick a cabinet' })).toBeVisible();
-    for (const title of ['Bolt Rush', 'Snake', 'Duel Cup']) {
+    for (const title of ['Bolt Rush', 'Steel Raid', 'Bug Invasion', 'Snake', 'Duel Cup', 'Game Boy Advance', 'PlayStation']) {
       expect(screen.getByRole('heading', { name: title })).toBeVisible();
     }
   });
@@ -53,6 +53,15 @@ describe('App', () => {
     await act(async () => fireEvent.click(screen.getByRole('button', { name: /Snake/ })));
     expect(screen.getByLabelText('Snake game board')).toBeInTheDocument();
     expect(screen.getByLabelText('Loading leaderboard')).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'All games' }));
+    expect(screen.getByRole('heading', { name: 'Pick a cabinet' })).toBeVisible();
+  });
+
+  it('opens the emulator and waits for a game file', async () => {
+    renderApp();
+    await act(async () => fireEvent.click(screen.getByRole('button', { name: /PlayStation/ })));
+    expect(screen.getByText('Insert a cartridge')).toBeVisible();
+    expect(screen.getByLabelText('Choose a game file')).toHaveAttribute('type', 'file');
     fireEvent.click(screen.getByRole('button', { name: 'All games' }));
     expect(screen.getByRole('heading', { name: 'Pick a cabinet' })).toBeVisible();
   });

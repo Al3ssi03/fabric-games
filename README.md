@@ -1,14 +1,22 @@
 # Fabric Arcade
 
-Una Fabric App (Microsoft Fabric Apps, preview) costruita con il **Rayfin SDK** che raccoglie tre giochi giocabili direttamente dentro Fabric:
+Una Fabric App (Microsoft Fabric Apps, preview) costruita con il **Rayfin SDK** che raccoglie cinque giochi giocabili direttamente dentro Fabric:
 
 | Gioco | Tipo | Giocatori | Classifica |
 | --- | --- | --- | --- |
 | **Bolt Rush** | Platformer ad alta velocità (momentum su pendii, molle, boost pad, charge dash, 2 zone) con la mascotte originale *Volt* | 1 | ✅ |
+| **Steel Raid** | Run-and-gun in stile arcade anni '90: prigionieri da liberare, mitragliatrice pesante, granate, coltello e un carro armato come boss | 1 | ✅ |
+| **Bug Invasion** | Shooter a ondate in stile anni '70: formazione di alieni che accelera, bunker che si sgretolano, disco volante bonus | 1 | ✅ |
 | **Snake** | Il classico | 1 | ✅ |
 | **Duel Cup** | Calcio "testa a testa" su una tastiera (oppure contro la CPU) | 2 | — |
 
 Tutta la grafica è disegnata a codice (canvas/SVG) e i suoni sono sintetizzati con WebAudio: nessun asset di terze parti.
+
+### Emulator lounge
+
+Una sezione per giocare a **Game Boy Advance** (core mGBA) e **PlayStation** (core PCSX ReARMed) con [EmulatorJS](https://emulatorjs.org).
+L'emulatore viene scaricato a runtime da `cdn.emulatorjs.org` dentro un iframe; l'app non contiene emulatori, BIOS né giochi.
+Il giocatore sceglie dal disco un file che possiede, il file viene letto nel browser e non viene mai caricato.
 
 ## Dove sta cosa
 
@@ -18,6 +26,7 @@ packages/shared/src/index.ts            # Contratto ScoreRecord condiviso col fr
 packages/frontend/src/App.tsx           # Lobby dell'arcade
 packages/frontend/src/arcade/           # Pagina gioco, classifica, copertine
 packages/frontend/src/games/            # Motori dei giochi (engine puri + componenti canvas)
+packages/frontend/src/emulator/         # Emulator lounge (EmulatorJS in iframe)
 packages/frontend/src/scores/           # Lettura/scrittura classifica via RayfinClient
 ```
 

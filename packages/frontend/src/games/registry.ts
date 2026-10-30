@@ -1,6 +1,8 @@
 import { BoltRushGame } from './bolt-rush/BoltRushGame';
+import { InvasionGame } from './invasion/InvasionGame';
 import { SnakeGame } from './snake/SnakeGame';
 import { SoccerGame } from './soccer/SoccerGame';
+import { SteelRaidGame } from './steel-raid/SteelRaidGame';
 import type { GameDefinition } from './types';
 
 export const GAMES: GameDefinition[] = [
@@ -18,6 +20,36 @@ export const GAMES: GameDefinition[] = [
       { keys: 'P', action: 'Pause' },
     ],
     Component: BoltRushGame,
+  },
+  {
+    id: 'steel-raid',
+    title: 'Steel Raid',
+    tagline: 'Run-and-gun commando mission: free prisoners, grab heavy weapons, topple the tank.',
+    players: '1 player',
+    scoredAs: 'steel-raid',
+    controls: [
+      { keys: '← →', action: 'Move' },
+      { keys: '↑ / ↓', action: 'Aim up / crouch' },
+      { keys: 'Space', action: 'Jump' },
+      { keys: 'X', action: 'Fire (knife up close)' },
+      { keys: 'C', action: 'Grenade' },
+      { keys: 'P', action: 'Pause' },
+    ],
+    Component: SteelRaidGame,
+  },
+  {
+    id: 'bug-invasion',
+    title: 'Bug Invasion',
+    tagline: 'Hold the line against a marching alien fleet, wave after faster wave.',
+    players: '1 player',
+    scoredAs: 'bug-invasion',
+    controls: [
+      { keys: '← →', action: 'Move' },
+      { keys: 'Space', action: 'Fire' },
+      { keys: 'Enter', action: 'Start' },
+      { keys: 'P', action: 'Pause' },
+    ],
+    Component: InvasionGame,
   },
   {
     id: 'snake',
